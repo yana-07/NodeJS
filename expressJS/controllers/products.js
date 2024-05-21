@@ -18,8 +18,8 @@ exports.postAddProduct = (req, res, next) => {
 };
 
 exports.getProducts = (req, res, next) => {
-    //res.sendFile(path.join(rootDir, 'views', 'shop.html'));
-    const products = Product.fetchAll();
+  //res.sendFile(path.join(rootDir, 'views', 'shop.html'));
+  Product.fetchAll(products => {
     res.render('shop', {
       prods: products,
       pageTitle: 'Shop',
@@ -29,4 +29,5 @@ exports.getProducts = (req, res, next) => {
       productCSS: true,
       //layout: false
     });
+  });
 };
